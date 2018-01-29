@@ -3,7 +3,7 @@
  Date: 2018-1-29
 */
 
-/*二维数组中的查找
+/*二维数组中查找
  描述：在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。
  请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。
  <p/>
@@ -20,7 +20,7 @@ import "fmt"
 // matrix 待查找的数组
 // rows columns 行列数
 // number 要查找数字
-func Find(matrix  [][] int, number int) bool {
+func Find(matrix [][] int, number int) bool {
 	// 获取数组行列数
 	rows := len(matrix)
 	columns := len(matrix[0])
@@ -32,14 +32,14 @@ func Find(matrix  [][] int, number int) bool {
 
 	// 从右上角开始查找，当前值大于查找值时，要找的元素可能在左边（列序号减一）
 	// 当小于时在可能在当前数的下边（行序号减一）
-	if matrix != nil && rows > 0 && columns > 0{
+	if matrix != nil && rows > 0 && columns > 0 {
 		for row < rows && column >= 0 {
-			if matrix[row][column] == number{
+			if matrix[row][column] == number {
 				found = true
 				break
-			}else if number < matrix[row][column]{
+			} else if number < matrix[row][column] {
 				column --
-			}else {
+			} else {
 				row ++
 			}
 		}
@@ -55,7 +55,7 @@ func main() {
 		{6, 8, 11, 15},
 	}
 	//fmt.Println(len(matrix[1]))
-	for i :=0;i < 15;i++{
-		fmt.Printf("find %d :%v\n",i,Find(matrix,i))
+	for i := 0; i < 15; i++ {
+		fmt.Printf("find %d :%v\n", i, Find(matrix, i))
 	}
 }
