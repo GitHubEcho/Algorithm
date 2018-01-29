@@ -8,9 +8,7 @@ Algorithm by Go language
  - `完整版`[The Go Play Space](https://goplay.space/)
 
 简易版只提供运行功能，完整版提供在线编辑、实时提醒、代码分享功能。现处于测试阶段，其他功能有待完善。
-以下代码演示由`The Go Play Space`完成，点击`Go`直达。
-
-推荐试试代码分享功能，本地代码编辑、代码调试较为方便。
+以下代码演示由`The Go Play Space`完成，点击`Go`直达，代码分享功能非常方便。
 
 ## 剑指offer
 声明：以下内容来源于[《剑指offer》](https://book.douban.com/subject/6966465/)
