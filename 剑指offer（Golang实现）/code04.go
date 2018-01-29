@@ -1,6 +1,6 @@
 /*
  Author: skyler
- Date: 2018-01-28
+ Date: 2018-01-29
 */
 
 /*替换空格
@@ -9,7 +9,7 @@
   分析：
 	常规的方法是：把字符串遍历，遇到空格替换字符串。
 	这样会导致最后的字符串，会随空格个数增加，向后面搬迁的次数也会增加。
-	最优解：先计算替换后字符串的长度。从字符串的后面遍历替换字符串。
+	最优解：先计算替换后字符串的长度。从字符串后面遍历，遇到空字符串替换字符串。
 */
 
 package main
@@ -36,11 +36,12 @@ func ReplaceBlack(str string, rep string) string {
 			}
 		}
 
-		// 计算新字符串的长度、原字符和新字符串的索引
+		// 计算新字符串的长度、原字符和新字符串的索引值
 		strLengthNew := len(str) + countBlank*(len(rep)-1)
 		indexOfOld := len(str) - 1
 		indexOfNew := strLengthNew - 1
 
+		// 从字符串后面遍历，遇到空字符串替换字符串
 		for indexOfOld >= 0 && indexOfNew > indexOfOld {
 			if string(str_arr[indexOfOld]) == " " {
 				for j := len(rep_arr); j > 0; j-- {
