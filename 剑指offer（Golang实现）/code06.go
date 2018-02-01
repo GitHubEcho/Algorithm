@@ -1,3 +1,18 @@
+/*
+ * Author: skyler
+ * Date: 2018-01-30
+ */
+
+/*重建二叉树
+ *描述：
+ * 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。
+ *  假设输入的前序遍历和中序遍历的结果中都不含重复的数字。
+ *  例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。
+ *分析：
+ *  先根据前序遍历序列的第一个数字创建根结点，接下来在中序遍历序列中找到根结点的位置，这样就能确定左、右子树结点的数量。
+ * 在前序遍历和中序遍历的序列中划分了左、右子树结点的值之后，就可以递归地去分别构建它的左右子树。
+ */
+
 package main
 
 import (
@@ -11,37 +26,7 @@ type BTree struct {
 	rchild *BTree
 }
 
-
-// 获取树的深度
-func (t *BTree) GetDepth() int {
-	var rd int
-	var ld int
-	if t == nil {
-		return 0;
-	} else {
-		ld = t.lchild.GetDepth()
-		rd = t.rchild.GetDepth()
-		if ld > rd {
-			return ld + 1
-		}
-		return rd + 1
-	}
-}
-
-/*
- *二叉树的遍历
- */
-
-// 前序遍历
-func (t *BTree) Preorder() {
-	if t != nil {
-		fmt.Print(t.value)
-		t.lchild.Preorder()
-		t.rchild.Preorder()
-	}
-}
-
-// 中序遍历
+// 后序遍历
 func (t *BTree) Inorder() {
 	if t != nil {
 		t.lchild.Inorder()
@@ -50,61 +35,21 @@ func (t *BTree) Inorder() {
 	}
 }
 
-// 后序遍历
-func (t *BTree) Postorder() {
-	if t != nil {
-		t.lchild.Postorder()
-		t.rchild.Postorder()
-		fmt.Print(t.value)
-	}
-}
-
-// 层次遍历
-//func (t *BTree) Levelorder() {
-//	var q Queue
-//	if t != nil {
-//		q = q.Push(t)
-//		for q.Len() != 0 {
-//			res := q.Pop()
-//			print(res.value)
-//			if res.lchild != nil {
-//				q = q.Push(res.lchild)
-//			}
-//			if res.rchild != nil {
-//				q = q.Push(res.rchild)
-//			}
-//		}
-//	}
-//}
-
-/*
- *二叉树构建
- */
-
-// 构建搜索二叉树
-func (t *BTree) insert(v int) *BTree {
-	if t == nil {
-		return &BTree{nil, v, nil}
-	}
-	if v < t.value {
-		t.lchild = t.lchild.insert(v)
-		return t
-	}
-	t.rchild = t.rchild.insert(v)
-	return t
-}
-
 // 通过前序后序、序列构建二叉树
-func Construct(preOrder []int, inOrder []int, length int) *BTree {
-	if preOrder == nil || inOrder == nil || length <= 0 {
+// @preOrder前序序列
+// @inOrder中序列
+func Construct(preOrder []int, inOrder []int ) *BTree {
+	// ConstructCore函数的封装，只需用户提供序列就可以构建二叉树
+	if preOrder == nil || inOrder == nil {
 		return nil
 	}
 	return ConstructCore(preOrder, 0, len(preOrder)-1,
 		inOrder, 0, len(inOrder)-1)
 }
 
+// 传入preOrder[]先序和中序inOrder []序列，用startPreOrder和endPreOrder标记起始位置和终止位置
 func ConstructCore(preOrder []int, startPreOrder int, endPreOrder int,
-	inOrder []int, startInOrder int, endInOrder int, ) *BTree {
+	inOrder []int, startInOrder int, endInOrder int) *BTree {
 
 	// 前序遍历序列的第一个数字是根结点的值
 	rootValue := preOrder[startPreOrder]
@@ -113,7 +58,7 @@ func ConstructCore(preOrder []int, startPreOrder int, endPreOrder int,
 	if startPreOrder == endPreOrder {
 		if startInOrder == endInOrder &&
 			preOrder[startPreOrder] == inOrder[startInOrder] {
-			return root;
+			return root
 		} else {
 			fmt.Println("Invalid input!")
 		}
@@ -158,7 +103,7 @@ func deserialize() {
 }
 
 func main() {
-	// 普通二叉树
+	//普通二叉树
 	//              1
 	//           /     \
 	//          2       3
@@ -169,7 +114,6 @@ func main() {
 	preorder := []int{1, 2, 4, 7, 3, 5, 6, 8}
 	inorder := []int{4, 7, 2, 1, 5, 3, 8, 6}
 
-	tree := Construct( preorder, inorder, 8)
-	fmt.Println(tree.GetDepth())
+	tree := Construct(preorder, inorder)
 	tree.Inorder()
 }
