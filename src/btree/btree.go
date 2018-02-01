@@ -94,17 +94,33 @@ func (t *BTree) insert(v int) *BTree {
 	return t
 }
 
+
+// 序列化
+func Serialize(A []int, head *BTree) {
+	// pro-serialize
+
+}
+
+// 反序列化
+func deserialize() {
+
+}
+
 // 通过前序后序、序列构建二叉树
-func Construct(preOrder []int, inOrder []int, length int) *BTree {
-	if preOrder == nil || inOrder == nil || length <= 0 {
+// @preOrder前序序列
+// @inOrder中序列
+func Construct(preOrder []int, inOrder []int) *BTree {
+	// ConstructCore函数的封装，只需用户提供序列就可以构建二叉树
+	if preOrder == nil || inOrder == nil {
 		return nil
 	}
 	return ConstructCore(preOrder, 0, len(preOrder)-1,
 		inOrder, 0, len(inOrder)-1)
 }
 
+// 传入preOrder[]先序和中序inOrder []序列，用startPreOrder和endPreOrder标记起始位置和终止位置
 func ConstructCore(preOrder []int, startPreOrder int, endPreOrder int,
-	inOrder []int, startInOrder int, endInOrder int, ) *BTree {
+	inOrder []int, startInOrder int, endInOrder int) *BTree {
 
 	// 前序遍历序列的第一个数字是根结点的值
 	rootValue := preOrder[startPreOrder]
@@ -113,7 +129,7 @@ func ConstructCore(preOrder []int, startPreOrder int, endPreOrder int,
 	if startPreOrder == endPreOrder {
 		if startInOrder == endInOrder &&
 			preOrder[startPreOrder] == inOrder[startInOrder] {
-			return root;
+			return root
 		} else {
 			fmt.Println("Invalid input!")
 		}
@@ -142,23 +158,11 @@ func ConstructCore(preOrder []int, startPreOrder int, endPreOrder int,
 		root.rchild = ConstructCore(preOrder, leftPreOrderEnd+1, endPreOrder,
 			inOrder, rootInOrder+1, endInOrder)
 	}
-
 	return root
 }
 
-// Serialization
-func Serialize(A []int, head *BTree) {
-	// pro-serialize
-
-}
-
-//Deserialization
-func deserialize() {
-
-}
-
 func main() {
-	// 普通二叉树
+	//普通二叉树
 	//              1
 	//           /     \
 	//          2       3
@@ -169,7 +173,6 @@ func main() {
 	preorder := []int{1, 2, 4, 7, 3, 5, 6, 8}
 	inorder := []int{4, 7, 2, 1, 5, 3, 8, 6}
 
-	tree := Construct( preorder, inorder, 8)
-	fmt.Println(tree.GetDepth())
+	tree := Construct(preorder, inorder)
 	tree.Inorder()
 }
