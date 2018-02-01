@@ -38,7 +38,7 @@ func (t *BTree) Inorder() {
 // 通过前序后序、序列构建二叉树
 // @preOrder前序序列
 // @inOrder中序列
-func Construct(preOrder []int, inOrder []int ) *BTree {
+func Construct(preOrder []int, inOrder []int) *BTree {
 	// ConstructCore函数的封装，只需用户提供序列就可以构建二叉树
 	if preOrder == nil || inOrder == nil {
 		return nil
@@ -87,19 +87,7 @@ func ConstructCore(preOrder []int, startPreOrder int, endPreOrder int,
 		root.rchild = ConstructCore(preOrder, leftPreOrderEnd+1, endPreOrder,
 			inOrder, rootInOrder+1, endInOrder)
 	}
-
 	return root
-}
-
-// Serialization
-func Serialize(A []int, head *BTree) {
-	// pro-serialize
-
-}
-
-//Deserialization
-func deserialize() {
-
 }
 
 func main() {
