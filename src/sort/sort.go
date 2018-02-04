@@ -8,9 +8,9 @@ package main
 import "fmt"
 
 /* 冒泡排序
- 时间复杂度 O(n^2)
- 稳定
- 优化：有序序列重复多次-->在某次冒泡后元素没有交换位置，直接返回
+ *时间复杂度 O(n^2)
+ *稳定
+ *优化：有序序列重复多次-->在某次冒泡后元素没有交换位置，直接返回
 */
 func BubbleSort(sli []int) {
 	for i := len(sli) - 1; i > 0; i-- {
@@ -28,9 +28,9 @@ func BubbleSort(sli []int) {
 }
 
 /* 选择排序
- 时间复杂度 O(n^2)
- 稳定
-*/
+ *时间复杂度 O(n^2)
+ *稳定
+ */
 func SelectSort(sli []int) {
 	for i := 0; i < len(sli); i++ {
 		min := i
@@ -49,9 +49,9 @@ func SelectSort(sli []int) {
  */
 
 /* 插入排序
- 时间复杂度O(n^2)
- 稳定
-*/
+ * 时间复杂度O(n^2)
+ * 稳定
+ */
 func InsertSort(sli []int) {
 	for i := 1; i < len(sli); i++ {
 		for j := i; j > 0; j-- {

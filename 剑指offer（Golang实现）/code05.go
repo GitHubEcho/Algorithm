@@ -23,11 +23,6 @@ type ListNode struct {
 	next  *ListNode
 }
 
-//// 初始化
-//func (l *ListNode) init() *ListNode {
-//	return &ListNode{0, nil}
-//}
-
 // 添加元素节点
 func (l *ListNode)append(e int) *ListNode {
 	node := ListNode{e, nil}

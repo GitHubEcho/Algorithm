@@ -1,13 +1,13 @@
 package btree
 
 // stack based on slice
-type Stack []*BTree
+type Stack []interface{}
 
-func (q *Stack) Push(n *BTree) {
+func (q *Stack) Push(n interface{}) {
 	*q = append(*q, n)
 }
 
-func (q *Stack) Pop() (n *BTree) {
+func (q *Stack) Pop() (n interface{}) {
 	x := q.Len() - 1
 	n = (*q)[x]
 	*q = (*q)[:x]

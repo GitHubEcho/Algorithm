@@ -1,6 +1,6 @@
 /*
- * Author: skyler
- * Date: 2018-01-30
+ Author: skyler
+ Date: 2018-01-30
  */
 
 /*重建二叉树
@@ -36,8 +36,7 @@ func (t *BTree) Inorder() {
 }
 
 // 通过前序后序、序列构建二叉树
-// @preOrder前序序列
-// @inOrder中序列
+// inOrder中序序列 preOrder前序序列
 func Construct(preOrder []int, inOrder []int) *BTree {
 	// ConstructCore函数的封装，只需用户提供序列就可以构建二叉树
 	if preOrder == nil || inOrder == nil {
@@ -47,7 +46,7 @@ func Construct(preOrder []int, inOrder []int) *BTree {
 		inOrder, 0, len(inOrder)-1)
 }
 
-// 传入preOrder[]先序和中序inOrder []序列，用startPreOrder和endPreOrder标记起始位置和终止位置
+// 传入preOrder[]先序，中序inOrder[]序列，用startPreOrder和endPreOrder标记起始位置和终止位置
 func ConstructCore(preOrder []int, startPreOrder int, endPreOrder int,
 	inOrder []int, startInOrder int, endInOrder int) *BTree {
 
@@ -91,7 +90,7 @@ func ConstructCore(preOrder []int, startPreOrder int, endPreOrder int,
 }
 
 func main() {
-	//普通二叉树
+	// 二叉树
 	//              1
 	//           /     \
 	//          2       3
