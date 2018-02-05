@@ -2,37 +2,34 @@ package stack
 
 import "errors"
 
-type Stack []interface{}
-
-func (stack Stack) Len() int {
-	return len(stack)
+//the size of the stack is allocated based on the slice
+type Stack struct {
+	data []interface{}
 }
 
-func (stack Stack) Cap() int {
-	return cap(stack)
+// Push adds x to the top of the stack.
+func (s *Stack) Push(x interface{}) {
+	s.data = append(s.data, x)
 }
 
-func (stack Stack) IsEmpty() bool {
-	return len(stack) == 0
-}
-
-func (stack *Stack) Push(e interface{}) {
-	*stack = append(*stack, e)
-}
-
-func (stack Stack) Top() (interface{}, error) {
-	if len(stack) == 0 {
+// Pop removes and returns the top element of the stack.
+// It's a run-time error to call Pop on an empty stack.
+func (s *Stack) Pop()( interface{}, error){
+	if s.Size() == 0{
 		return nil, errors.New("stack is empty")
 	}
-	return stack[len(stack)-1], nil
+	i := len(s.data) - 1
+	res := s.data[i]
+	s.data[i] = nil // to avoid memory leak
+	s.data = s.data[:i]
+	return res,nil
 }
 
-func (stack *Stack) Pop() (interface{}, error) {
-	stk := *stack	// dereference to a local variable stk
-	if len(stk) == 0 {
-		return nil, errors.New("stack is empty")
-	}
-	top := stk[len(stk)-1]
-	*stack = stk[:len(stk)-1] // shrink the stack
-	return top, nil
+// Size returns the number of elements in the stack.
+func (s *Stack) Size() int {
+	return len(s.data)
+}
+
+func (s *Stack)IsEmpty() bool {
+	return len(s.data) == 0
 }
