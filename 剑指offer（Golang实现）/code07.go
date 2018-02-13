@@ -46,7 +46,7 @@ func (q *queue) Pop() interface{} {
 	case nil:
 		res = errors.New("queue is empty")
 	default:
-		res = errors.New("type is error")
+		res = errors.New("Unexpected type")
 	}
 	return res
 }
