@@ -25,6 +25,7 @@ func FibonacciRecursive(n int) (res uint) {
 		return uint(n)
 	}
 	res = FibonacciRecursive(n-1) + FibonacciRecursive(n-2)
+	fibs[n] = res
 	return res
 }
 
