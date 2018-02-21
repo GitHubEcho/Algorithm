@@ -24,7 +24,7 @@ type ListNode struct {
 }
 
 // 添加元素节点
-func (l *ListNode)append(e int) *ListNode {
+func (l *ListNode) append(e int) *ListNode {
 	node := ListNode{e, nil}
 	ptr := l
 	for ptr.next != nil {
@@ -45,7 +45,7 @@ func (l *ListNode) PrintListReverse() {
 		p = p.next
 	}
 	//println(slice)
-	for i := len(slice) - 1; i >= 0; i -- {
+	for i := len(slice) - 1; i >= 0; i-- {
 		fmt.Print(slice[i])
 	}
 }

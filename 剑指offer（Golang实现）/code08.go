@@ -35,7 +35,7 @@ func Min(numbers []int) int {
 			break
 		}
 
-		indexmid = (index1 + index2 ) / 2
+		indexmid = (index1 + index2) / 2
 
 		// 当出现三个数相等时只能使用顺序的方式查找
 		if numbers[indexmid] == numbers[index1] && numbers[index1] == numbers[index2] {

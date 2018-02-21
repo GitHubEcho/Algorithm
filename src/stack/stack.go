@@ -14,15 +14,15 @@ func (s *Stack) Push(x interface{}) {
 
 // Pop removes and returns the top element of the stack.
 // It's a run-time error to call Pop on an empty stack.
-func (s *Stack) Pop()( interface{}, error){
-	if s.Size() == 0{
+func (s *Stack) Pop() (interface{}, error) {
+	if s.Size() == 0 {
 		return nil, errors.New("stack is empty")
 	}
 	i := len(s.data) - 1
 	res := s.data[i]
 	s.data[i] = nil // to avoid memory leak
 	s.data = s.data[:i]
-	return res,nil
+	return res, nil
 }
 
 // Size returns the number of elements in the stack.
@@ -30,6 +30,6 @@ func (s *Stack) Size() int {
 	return len(s.data)
 }
 
-func (s *Stack)IsEmpty() bool {
+func (s *Stack) IsEmpty() bool {
 	return len(s.data) == 0
 }

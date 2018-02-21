@@ -32,7 +32,7 @@ func ReplaceBlack(str string, rep string) string {
 		for i, v := range str {
 			str_arr[i] = v
 			if string(v) == " " {
-				countBlank ++
+				countBlank++
 			}
 		}
 
@@ -46,13 +46,13 @@ func ReplaceBlack(str string, rep string) string {
 			if string(str_arr[indexOfOld]) == " " {
 				for j := len(rep_arr); j > 0; j-- {
 					str_arr[indexOfNew] = rep_arr[j-1]
-					indexOfNew --
+					indexOfNew--
 				}
 			} else {
 				str_arr[indexOfNew] = str_arr[indexOfOld]
-				indexOfNew --
+				indexOfNew--
 			}
-			indexOfOld --
+			indexOfOld--
 		}
 	}
 	return string(str_arr)

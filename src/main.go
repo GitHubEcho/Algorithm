@@ -12,8 +12,7 @@ func main() {
 
 	//t1.inorder()
 
-	t.Levelorder()  //层次遍历
+	t.Levelorder() //层次遍历
 
 	//t1.postorder()
 }
-

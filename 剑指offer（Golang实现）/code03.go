@@ -20,7 +20,7 @@ import "fmt"
 // matrix：待查找的数组
 // rows columns：行列数
 // number：要查找数字
-func Find(matrix [][] int, number int) bool {
+func Find(matrix [][]int, number int) bool {
 	// 获取数组行列数
 	rows := len(matrix)
 	columns := len(matrix[0])
@@ -38,9 +38,9 @@ func Find(matrix [][] int, number int) bool {
 				found = true
 				break
 			} else if number < matrix[row][column] {
-				column --
+				column--
 			} else {
-				row ++
+				row++
 			}
 		}
 	}

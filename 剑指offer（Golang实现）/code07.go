@@ -1,7 +1,7 @@
 /*
  Author: skyler
  Date: 2018-02-02
- */
+*/
 
 /*两个栈实现队列
  *描述：
@@ -16,9 +16,9 @@
 package main
 
 import (
-	"stack"
-	"fmt"
 	"errors"
+	"fmt"
+	"stack"
 )
 
 type queue struct {

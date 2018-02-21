@@ -11,7 +11,7 @@ import "fmt"
  *时间复杂度 O(n^2)
  *稳定
  *优化：有序序列重复多次-->在某次冒泡后元素没有交换位置，直接返回
-*/
+ */
 func BubbleSort(sli []int) {
 	for i := len(sli) - 1; i > 0; i-- {
 		isChange := false
@@ -96,14 +96,14 @@ func QuickSort(sli []int) {
 	for i := 1; i <= end; {
 		if sli[i] > mid {
 			sli[i], sli[end] = sli[end], sli[i]
-			end --
+			end--
 		} else {
 			sli[i], sli[start] = sli[start], sli[i]
 			start++
 			i++
 		}
 		sli[start] = mid
-		QuickSort(sli[:start])   //切片后的slice指向同一个数组
+		QuickSort(sli[:start]) //切片后的slice指向同一个数组
 		QuickSort(sli[start+1:])
 	}
 }

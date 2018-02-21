@@ -20,9 +20,9 @@ import "fmt"
 
 func NumberOfOne1(n int) int {
 	count := 0
-	for n != 0 { // bool(n)编译错误，go语言中1不表示ture。
+	for n != 0 { // bool(n)编译错误，go语言中1不等同于ture。
 		if (n & 1) != 0 {
-			count ++
+			count++
 		}
 		n = n >> 1
 	}
@@ -34,7 +34,7 @@ func NumberOfOne2(n int) int {
 	count := 0
 	for flag != 0 {
 		if (n & flag) != 0 {
-			count ++
+			count++
 		}
 		flag = flag << 1
 	}
@@ -44,13 +44,12 @@ func NumberOfOne2(n int) int {
 func NumberOfOne3(n int) int {
 	count := 0
 	for n != 0 {
-		count ++
+		count++
 		n = (n - 1) & n
 
 	}
 	return count
 }
-
 
 func main() {
 	fmt.Println(NumberOfOne1(3))

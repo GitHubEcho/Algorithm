@@ -39,7 +39,7 @@ func Fibonacci(n int) uint {
 	i, a, b := 0, 0, 1
 	for i < n {
 		a, b = b, a+b
-		i ++
+		i++
 	}
 	return uint(a)
 }
